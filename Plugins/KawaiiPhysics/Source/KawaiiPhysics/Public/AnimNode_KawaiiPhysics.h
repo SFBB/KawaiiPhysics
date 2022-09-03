@@ -47,6 +47,19 @@ enum class ECollisionLimitType : uint8
 	Planar,
 };
 
+USTRUCT
+struct FXYZCurve
+{
+	GENERATED_BODY();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FRuntimeFloatCurve X;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FRuntimeFloatCurve Y;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FRuntimeFloatCurve Z;
+};
+
 USTRUCT()
 struct FCollisionLimitBase
 {
@@ -266,7 +279,7 @@ public:
 	//  START SKYBLUE MOD
 	/** Curve for adjusting the set value of physical behavior. Use rate of bone length from Root */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Physics Settings", meta = (PinHiddenByDefault))
-	FRuntimeFloatCurve DampingCurveData;
+	FXYZCurve DampingCurveData;
 
 	/** Curve for adjusting the set value of physical behavior. Use rate of bone length from Root */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Physics Settings", meta = (PinHiddenByDefault))
